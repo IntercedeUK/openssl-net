@@ -383,6 +383,15 @@ namespace OpenSSL.Crypto
 			Native.ExpectSuccess(Native.PEM_write_bio_PKCS8PrivateKey(bp.Handle, ptr, cipher.Handle, IntPtr.Zero, 0, thunk.Callback, IntPtr.Zero));
 		}
 
+		/// <summary>
+		/// Calls PEM_write_bio_PKCS8PrivateKey with no encryption
+		/// </summary>
+		/// <param name="bp"></param>
+    public void WritePrivateKey(BIO bp)
+    {
+      Native.ExpectSuccess(Native.PEM_write_bio_PKCS8PrivateKey(bp.Handle, ptr, IntPtr.Zero, IntPtr.Zero, 0, null, IntPtr.Zero));
+    }
+        
 		#endregion
 
 		#region Overrides
